@@ -12,11 +12,12 @@
 
 ![MainDlg2](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/Main_2.png)
 
-![BuilderPanel](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/Builder.png)
-
 ![StatusPanel](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/Status.png)
 
 ![AboutPanel](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/About.png)
+
+## Features
+![BuilderPanel](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/Builder.png)
 
 ![ScreenSpyPanel](https://github.com/killeven/Poison-Ivy-Reload/blob/master/screenshot/ScreenSpy_1.png)
 
