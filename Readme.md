@@ -3,7 +3,9 @@
 * **Support Winxp-Win10(x86 and x64 paltform**)
 * **Shellcode and FWB+ technology**
 * **Single thread and single port(Inspiration comes from Bifrost Rat)**
-* **增加了WOW64的支持，由于UAC的问题，有几个功能没有作用，比如ACTIVEX启动，由于更改了Loader，没有时间更改Client端的生成功能，最近好忙，等有时间再修改，先提交上来，有时间的可以Branch修改**
+* **增加了WOW64的支持，由于UAC的问题，有几个功能没有作用，比如ACTIVEX启动，由于更改了Loader，没有时间更改Client端的生成功能，最近好忙，等有时间再修改，先提交上来，有时间的可以Fork修改**
+* **现在的shellcode结构类似于2.32，会先注入到explorer然后再注入到目标进程，增加了守护的功能**
+* **请使用fasm,delphi,vs2013编译**
 
 ## Screenshot
 
