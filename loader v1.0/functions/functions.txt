@@ -1,0 +1,364 @@
+WINBASEAPI
+__out_opt
+HMODULE
+WINAPI
+LoadLibraryA(
+    __in LPCSTR lpLibFileName
+    );
+WINBASEAPI
+__out_opt
+HMODULE
+WINAPI
+LoadLibraryW(
+    __in LPCWSTR lpLibFileName
+    );
+WINBASEAPI
+FARPROC
+WINAPI
+GetProcAddress (
+    __in HMODULE hModule,
+    __in LPCSTR lpProcName
+    );
+WINBASEAPI
+__out
+HANDLE
+WINAPI
+GetCurrentProcess(
+    VOID
+    );
+WINBASEAPI
+BOOL
+WINAPI
+CloseHandle(
+    __in HANDLE hObject
+    );
+WINBASEAPI
+HANDLE
+WINAPI
+OpenProcess(
+    __in DWORD dwDesiredAccess,
+    __in BOOL bInheritHandle,
+    __in DWORD dwProcessId
+    );
+WINBASEAPI
+int
+WINAPI
+lstrlenA(
+    __in LPCSTR lpString
+    );
+WINBASEAPI
+int
+WINAPI
+lstrlenW(
+    __in LPCWSTR lpString
+    );
+WINBASEAPI
+int
+WINAPI
+lstrcmpiW(
+    __in LPCWSTR lpString1,
+    __in LPCWSTR lpString2
+    );
+LPVOID
+WINAPI
+HeapAlloc(
+    __in HANDLE hHeap,
+    __in DWORD dwFlags,
+    __in SIZE_T dwBytes
+    );
+LPVOID
+WINAPI
+HeapReAlloc(
+    __inout HANDLE hHeap,
+    __in    DWORD dwFlags,
+    __deref LPVOID lpMem,
+    __in    SIZE_T dwBytes
+    );
+BOOL
+WINAPI
+HeapFree(
+    __inout HANDLE hHeap,
+    __in    DWORD dwFlags,
+    __drv_freesMem(Mem) __post __notvalid __deref LPVOID lpMem
+    );
+HANDLE
+WINAPI
+GetProcessHeap( VOID );
+HMODULE
+WINAPI
+GetModuleHandleA(
+    __in_opt LPCSTR lpModuleName
+    );
+DWORD
+WINAPI
+GetModuleFileNameW(
+    __in_opt HMODULE hModule,
+    __out_ecount_part(nSize, return + 1) LPWSTR lpFilename,
+    __in     DWORD nSize
+    );
+HANDLE
+WINAPI
+CreateMutexW(
+    __in_opt LPSECURITY_ATTRIBUTES lpMutexAttributes,
+    __in     BOOL bInitialOwner,
+    __in_opt LPCWSTR lpName
+    );
+DWORD
+WINAPI
+GetLastError(
+    VOID
+    );
+WINBASEAPI
+VOID
+WINAPI
+Sleep(
+    __in DWORD dwMilliseconds
+    );
+LPVOID
+WINAPI
+VirtualAllocEx(
+    __in     HANDLE hProcess,
+    __in_opt LPVOID lpAddress,
+    __in     SIZE_T dwSize,
+    __in     DWORD flAllocationType,
+    __in     DWORD flProtect
+    );
+WINBASEAPI
+BOOL
+WINAPI
+VirtualFreeEx(
+    __in HANDLE hProcess,
+    __in LPVOID lpAddress,
+    __in SIZE_T dwSize,
+    __in DWORD  dwFreeType
+    );
+WINBASEAPI
+BOOL
+WINAPI
+WriteProcessMemory(
+    __in      HANDLE hProcess,
+    __in      LPVOID lpBaseAddress,
+    __in_bcount(nSize) LPCVOID lpBuffer,
+    __in      SIZE_T nSize,
+    __out_opt SIZE_T * lpNumberOfBytesWritten
+    );
+WINBASEAPI
+DWORD
+WINAPI
+WaitForSingleObject(
+    __in HANDLE hHandle,
+    __in DWORD dwMilliseconds
+    );
+HANDLE
+WINAPI
+CreateToolhelp32Snapshot(
+    DWORD dwFlags,
+    DWORD th32ProcessID
+    );
+BOOL
+WINAPI
+Process32FirstW(
+    HANDLE hSnapshot,
+    LPPROCESSENTRY32W lppe
+    );
+BOOL
+WINAPI
+Process32NextW(
+    HANDLE hSnapshot,
+    LPPROCESSENTRY32W lppe
+    );
+DWORD
+WINAPI
+ExpandEnvironmentStringsW(
+    __in LPCWSTR lpSrc,
+    __out_ecount_part_opt(nSize, return) LPWSTR lpDst,
+    __in DWORD nSize
+    );
+BOOL
+WINAPI
+CreateProcessW(
+    __in_opt    LPCWSTR lpApplicationName,
+    __inout_opt LPWSTR lpCommandLine,
+    __in_opt    LPSECURITY_ATTRIBUTES lpProcessAttributes,
+    __in_opt    LPSECURITY_ATTRIBUTES lpThreadAttributes,
+    __in        BOOL bInheritHandles,
+    __in        DWORD dwCreationFlags,
+    __in_opt    LPVOID lpEnvironment,
+    __in_opt    LPCWSTR lpCurrentDirectory,
+    __in        LPSTARTUPINFOW lpStartupInfo,
+    __out       LPPROCESS_INFORMATION lpProcessInformation
+    );
+HANDLE
+WINAPI
+CreateRemoteThread(
+    __in      HANDLE hProcess,
+    __in_opt  LPSECURITY_ATTRIBUTES lpThreadAttributes,
+    __in      SIZE_T dwStackSize,
+    __in      LPTHREAD_START_ROUTINE lpStartAddress,
+    __in_opt  LPVOID lpParameter,
+    __in      DWORD dwCreationFlags,
+    __out_opt LPDWORD lpThreadId
+    );
+VOID  WINAPI RtlZeroMemory(    IN VOID UNALIGNED  *Destination,    IN SIZE_T  Length
+    );VOID  WINAPI RtlMoveMemory(    IN VOID UNALIGNED  *Destination,
+    IN CONST VOID UNALIGNED  *Source,    IN SIZE_T  Length    );
+NTSTATUS WINAPI RtlCompressBuffer(
+  USHORT CompressionFormatAndEngine,
+  PUCHAR UncompressedBuffer,
+  ULONG  UncompressedBufferSize,
+  PUCHAR CompressedBuffer,
+  ULONG  CompressedBufferSize,
+  ULONG  UncompressedChunkSize,
+  PULONG FinalCompressedSize,
+  PVOID  WorkSpace
+);
+NTSTATUS WINAPI RtlGetCompressionWorkSpaceSize(
+  USHORT CompressionFormatAndEngine,
+  PULONG CompressBufferWorkSpaceSize,
+  PULONG CompressFragmentWorkSpaceSize
+);
+NTSTATUS WINAPI RtlDecompressBuffer(
+  USHORT CompressionFormat,
+  PUCHAR UncompressedBuffer,
+  ULONG  UncompressedBufferSize,
+  PUCHAR CompressedBuffer,
+  ULONG  CompressedBufferSize,
+  PULONG FinalUncompressedSize
+);
+WINADVAPI
+BOOL
+WINAPI
+OpenProcessToken (
+    __in        HANDLE ProcessHandle,
+    __in        DWORD DesiredAccess,
+    __deref_out PHANDLE TokenHandle
+    );
+WINADVAPI
+BOOL
+WINAPI
+LookupPrivilegeValueA(
+    __in_opt LPCSTR lpSystemName,
+    __in     LPCSTR lpName,
+    __out    PLUID   lpLuid
+    );
+WINADVAPI
+BOOL
+WINAPI
+AdjustTokenPrivileges (
+    __in      HANDLE TokenHandle,
+    __in      BOOL DisableAllPrivileges,
+    __in_opt  PTOKEN_PRIVILEGES NewState,
+    __in      DWORD BufferLength,
+    __out_bcount_part_opt(BufferLength, *ReturnLength) PTOKEN_PRIVILEGES PreviousState,
+    __out_opt PDWORD ReturnLength
+    );
+WINADVAPI
+LSTATUS
+APIENTRY
+RegOpenKeyExA (
+    __in HKEY hKey,
+    __in_opt LPCSTR lpSubKey,
+    __in_opt DWORD ulOptions,
+    __in REGSAM samDesired,
+    __out PHKEY phkResult
+    );
+WINADVAPI
+LSTATUS
+APIENTRY
+RegCreateKeyExW (
+    __in HKEY hKey,
+    __in LPCWSTR lpSubKey,
+    __reserved DWORD Reserved,
+    __in_opt LPWSTR lpClass,
+    __in DWORD dwOptions,
+    __in REGSAM samDesired,
+    __in_opt CONST LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+    __out PHKEY phkResult,
+    __out_opt LPDWORD lpdwDisposition
+    );
+WINADVAPI
+LSTATUS
+APIENTRY
+RegSetValueExW (
+    __in HKEY hKey,
+    __in_opt LPCWSTR lpValueName,
+    __reserved DWORD Reserved,
+    __in DWORD dwType,
+    __in_bcount_opt(cbData) CONST BYTE* lpData,
+    __in DWORD cbData
+    );
+WINADVAPI
+LSTATUS
+APIENTRY
+RegQueryValueExW (
+    __in HKEY hKey,
+    __in_opt LPCWSTR lpValueName,
+    __reserved LPDWORD lpReserved,
+    __out_opt LPDWORD lpType,
+    __out_bcount_part_opt(*lpcbData, *lpcbData) __out_data_source(REGISTRY) LPBYTE lpData,
+    __inout_opt LPDWORD lpcbData
+    );
+WINADVAPI
+LSTATUS
+APIENTRY
+RegCloseKey (
+    __in HKEY hKey
+    );
+int PASCAL FAR WSAStartup(
+                          __in WORD wVersionRequired,
+                          __out LPWSADATA lpWSAData);
+int PASCAL FAR WSACleanup(void);
+
+u_short PASCAL FAR htons (__in u_short hostshort);
+
+u_long PASCAL FAR inet_addr (__in const char FAR * cp);
+
+struct hostent FAR * PASCAL FAR gethostbyname(__in_z const char FAR * name);
+SOCKET PASCAL FAR socket (
+                          __in int af,
+                          __in int type,
+                          __in int protocol);
+int PASCAL FAR closesocket ( IN SOCKET s);
+
+int PASCAL FAR connect (
+                        __in SOCKET s,
+                        __in_bcount(namelen) const struct sockaddr FAR *name,
+                        __in int namelen);
+int PASCAL FAR setsockopt (
+                           __in SOCKET s,
+                           __in int level,
+                           __in int optname,
+                           __in_bcount_opt(optlen) const char FAR * optval,
+                           __in int optlen);
+int PASCAL FAR send (
+                     __in SOCKET s,
+                     __in_bcount(len) const char FAR * buf,
+                     __in int len,
+                     __in int flags);
+int PASCAL FAR recv (
+                     __in SOCKET s,
+                     __out_bcount_part(len, return) __out_data_source(NETWORK) char FAR * buf,
+                     __in int len,
+                     __in int flags);
+int PASCAL FAR select (
+                        __in int nfds,
+                        __inout_opt fd_set FAR *readfds,
+                        __inout_opt fd_set FAR *writefds,
+                        __inout_opt fd_set FAR *exceptfds,
+                        __in_opt  const struct timeval FAR *timeout);
+						WINBASEAPI
+__out
+LPWSTR
+WINAPI
+lstrcpyW(
+    __out_z LPWSTR lpString1, // deprecated: annotation is as good as it gets
+    __in  LPCWSTR lpString2
+    );
+WINBASEAPI
+__out
+LPSTR
+WINAPI
+lstrcpyA(
+    __out_z LPSTR lpString1, // deprecated: annotation is as good as it gets
+    __in  LPCSTR lpString2
+    );	

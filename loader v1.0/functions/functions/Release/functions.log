@@ -1,0 +1,28 @@
+﻿生成启动时间为 2019/6/10 15:44:56。
+     1>项目“E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\functions\functions.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O1 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _USING_V110_SDK71_ /D _MBCS /Gm- /MT /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt /D _CRT_SECURE_NO_WARNINGS cmd_shell.c functions.c process.c screenspy.c shellcode_main.c information.c thumbnail.c
+     1>cl : 命令行 warning D9025: 正在重写“/sdl”(用“/GS-”)
+         cmd_shell.c
+         functions.c
+         process.c
+         screenspy.c
+         shellcode_main.c
+         information.c
+         thumbnail.c
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\Release\functions.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\Release\functions.pdb" /MAP /SUBSYSTEM:CONSOLE,"5.01" /OPT:REF /OPT:ICF /ORDER:@"order.txt" /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\Release\functions.lib" /MACHINE:X86 /SAFESEH:NO Release\cmd_shell.obj
+         Release\functions.obj
+         Release\process.obj
+         Release\screenspy.obj
+         Release\shellcode_main.obj
+         Release\information.obj
+         Release\thumbnail.obj
+         LINK : 已指定 /LTCG，但不需要生成代码；从链接命令行中移除 /LTCG 以提高链接器性能
+         functions.vcxproj -> E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\Release\functions.exe
+     1>已完成生成项目“E:\VX_Project\Poison Ivy Reload\loader v1.0\functions\functions\functions.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.32

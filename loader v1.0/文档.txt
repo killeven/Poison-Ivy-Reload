@@ -1,0 +1,64 @@
+Loader部分功能
+	连接方式
+		直连(Loader必须包含的功能)
+		SOCKS5连接(可选功能)
+
+	自启动(可选功能)
+		HKLM/Run(可选功能)
+		ActiveX(可选功能)
+
+	复制自身(可选功能)
+		System目录
+		Windows目录
+		是否删除原文件
+
+	注入(可选功能，需要包含WOW64相关代码) (需要包含32位与64位代码)(不使用注入的时候只需要包含32位代码，loader_main直接执行)
+		守护(可选功能)
+		注入到特定进程(查找四次进程，每次7秒的间隔，PI会注入到Explorer然后再注入到目标进程或者启动默认浏览器注入)
+		默认注入到默认浏览器(可选功能)
+		
+	WOW64功能
+		wow64_call
+		wow64_inject_memroy
+		wow64_create_remote_thread
+	
+Loader -> 注入到Explorer(x86, x64) -> 注入到浏览器或者特定进程(x86)
+
+注入相关内存布局(
+	inject_to_explorer	
+		wow64_inject_memroy
+		wow64_create_remote_thread
+		wow64_call(vs编写)
+		
+		inject_to_explorer_code_x86(复制loader，添加启动项，删除原文件，注入到默认浏览器或特定进程)(vs编写)
+		inject_to_explorer_code_x64(复制loader，添加启动项，删除原文件，注入到默认浏览器或特定进程)(vs编写)
+		
+		get_proc_from_hash_x64
+		get_kernel32_base_x64
+		get_ntdll_base_x64
+		
+为了更方便的协调x86与x64 code
+所有的额外函数都被扩充成了int64
+
+代码结构
+	entry(修复api,修复基本函数,拷贝config到结构中，如果不注入的话，就直接拷贝文件，增加启动项，创建thread)
+	inject_to_explorer(注入到explorer中的代码，拷贝文件，增加启动项，注入socket_main到目标进程，创建IE进程并注入，守护)
+		wow64_call
+		wow64_inject_memroy
+		wow64_create_remote_thread
+		get_kernel32_base_x64
+		get_ntdll_base_x64
+		get_proc_from_hash_x64
+		
+	thread_main(注入到目标进程的代码，连接服务端等)
+
+文件夹
+	include(通用声明x86 and x64)
+	extra_function(额外的函数)
+	loader_main(主shellcode)
+	
+x64 api如何修复
+	声明结构体
+	vc编写x64 code
+	编写fix代码
+	

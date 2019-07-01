@@ -1,0 +1,17 @@
+typedef void * (__stdcall *_get_proc_from_hash)(HMODULE, DWORD, _GetProcAddress);
+typedef void (__stdcall *_rc4_init)(unsigned char *, const char *, DWORD);
+typedef void (__stdcall *_rc4_crypt)(unsigned char *, const char *, DWORD);
+typedef void *(__stdcall *_alloc_memory)(global_data_p, DWORD);
+typedef void *(__stdcall *_realloc_memory)(global_data_p, void *, DWORD);
+typedef void *(__stdcall *_free_memory)(global_data_p, void *);
+typedef void *(__stdcall *_alloc_executable_memory)(global_data_p, HANDLE, DWORD);
+typedef void (__stdcall *_free_executable_memory)(global_data_p, HANDLE, void *);
+typedef void *(__stdcall *_inject_memory)(global_data_p, HANDLE, void *, DWORD);
+typedef int (__stdcall *_compress)(global_data_p, void *, DWORD, void *, DWORD);
+typedef int (__stdcall *_decompress)(global_data_p, void *, DWORD, void *, DWORD);
+typedef int (__stdcall *_wait_buffer)(global_data_p, SOCKET, DWORD, DWORD);
+typedef int (__stdcall *_recv_data)(global_data_p, SOCKET, void *, DWORD);
+typedef int (__stdcall *_send_data)(global_data_p, SOCKET, void *, DWORD);
+typedef uint64_t (__cdecl *_wow64_call)(uint64_t func, int argC, ...);
+typedef uint64_t (__cdecl *_wow64_inject_memory)(global_data_t *global_data, HANDLE process, unsigned char *buf, uint32_t size);
+typedef HANDLE (__cdecl *_wow64_create_remote_thread)(global_data_t *global_data, HANDLE process, uint64_t thread, uint64_t param);

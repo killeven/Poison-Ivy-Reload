@@ -1,0 +1,15 @@
+inject_to_explorer@16
+wow64_create_remote_thread
+inject_memory
+wow64_inject_memory
+wow64_call
+inject_to_explorer_end
+
+inject_to_explorer_code_x86@4
+inject_to_explorer_code_x86_end
+
+rc4_init_code@12
+rc4_init_end
+
+rc4_crypt_code@12
+rc4_crypt_end
