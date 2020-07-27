@@ -1,9 +1,9 @@
 #define global_data buf->global_data  // define globaldata for other
 
 #pragma warning(push)
-#pragma warning(disable:4244) // È¥³ý×ª»»¿ÉÄÜ¶ªÊ§Êý¾ÝµÄ¾¯¸æ
+#pragma warning(disable:4244) // åŽ»é™¤è½¬æ¢å¯èƒ½ä¸¢å¤±æ•°æ®çš„è­¦å‘Š
 
-// windows¶¼ÊÇlittle endian¶ømsgpackÊÇbig endianËùÒÔÕâÀïÖ»´¦ÀíÐ¡¶ËÐò
+// windowséƒ½æ˜¯little endianè€Œmsgpackæ˜¯big endianæ‰€ä»¥è¿™é‡Œåªå¤„ç†å°ç«¯åº
 #define _store16(p, x) *(uint16_t *)p = (uint16_t)((((x) >> 8) & 0x0ff) | (x) << 8)
 
 #define _store32(p, x)                    \
@@ -190,7 +190,7 @@ void __cdecl msgpack_lite_pack_str(buffer_t *buf, const char *v) {
   else if (l < 0x10000) {
     *s++ = 0xda;
     _store16(s, (uint16_t)l);
-    buf += sizeof(uint16_t);
+    s += sizeof(uint16_t);
     buf->size += sizeof(uint8_t) + sizeof(uint16_t);
   }
   else {
@@ -208,8 +208,8 @@ void __cdecl msgpack_lite_pack_widestr(buffer_t *buf, const wchar_t *v) {
   int l = xWideCharToMultiByte(CP_UTF8, 0, v, -1, 0, 0, 0, 0);
   buffer_checkspace(buf, l + sizeof(uint8_t) + sizeof(uint32_t));
   /*
-  Èç¹ûº¯ÊýÔËÐÐ³É¹¦£¬²¢ÇÒcchMultiByte²»ÎªÁã£¬·µ»ØÖµÊÇÓÉ lpMultiByteStrÖ¸ÏòµÄ»º³åÇøÖÐÐ´ÈëµÄ×Ö½ÚÊý£»Èç¹ûº¯ÊýÔËÐÐ³É¹¦£¬
-  ²¢ÇÒcchMultiByteÎªÁã£¬·µ»ØÖµÊÇ½ÓÊÕµ½´ý×ª»»×Ö·û´®µÄ»º³åÇøËù±ØÐèµÄ×Ö½ÚÊý°üÀ¨Ä©Î²µÄ0¡£Èç¹ûº¯ÊýÔËÐÐÊ§°Ü£¬·µ»ØÖµÎªÁã
+  å¦‚æžœå‡½æ•°è¿è¡ŒæˆåŠŸï¼Œå¹¶ä¸”cchMultiByteä¸ä¸ºé›¶ï¼Œè¿”å›žå€¼æ˜¯ç”± lpMultiByteStræŒ‡å‘çš„ç¼“å†²åŒºä¸­å†™å…¥çš„å­—èŠ‚æ•°ï¼›å¦‚æžœå‡½æ•°è¿è¡ŒæˆåŠŸï¼Œ
+  å¹¶ä¸”cchMultiByteä¸ºé›¶ï¼Œè¿”å›žå€¼æ˜¯æŽ¥æ”¶åˆ°å¾…è½¬æ¢å­—ç¬¦ä¸²çš„ç¼“å†²åŒºæ‰€å¿…éœ€çš„å­—èŠ‚æ•°åŒ…æ‹¬æœ«å°¾çš„0ã€‚å¦‚æžœå‡½æ•°è¿è¡Œå¤±è´¥ï¼Œè¿”å›žå€¼ä¸ºé›¶
   */
   l -= 1;
   uint8_t *s = buf->data + buf->size;
